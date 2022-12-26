@@ -1,7 +1,8 @@
 {
-	"name": "{{Your Figma plugin name}}",
-	"id": "{{Your Figma plugin ID}}",
+	"name": "Themer",
+	"id": "0123456789",
 	"api": "1.0.0",
 	"main": "dist/code.js",
+	"editorType": ["figma"],
 	"ui": "dist/ui.html"
 }

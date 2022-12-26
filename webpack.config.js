@@ -1,6 +1,6 @@
 const path = require("path");
-const HtmlWebpackInlineSourcePlugin = require("html-webpack-inline-source-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
 const webpack = require("webpack");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
@@ -17,35 +17,24 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["vue-style-loader", "css-loader"]
-      },
-      {
         test: /\.ts?$/,
         use: "ts-loader",
         exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/,
-        use: ["vue-style-loader", "css-loader", "sass-loader"]
-      },
-      {
-        test: /\.sass$/,
-        use: ["vue-style-loader", "css-loader", "sass-loader?indentedSyntax"]
       },
       {
         test: /\.vue$/,
         loader: "vue-loader"
       },
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"]
-          }
-        }
+        test: /\.(css|postcss)$/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 }
+          },
+          'postcss-loader'
+        ]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -72,12 +61,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: "ui.html",
-      inlineSource: ".(js)$",
-      chunks: ["ui"]
+      template: './src/ui/index.html',
+      filename: 'ui.html',
+      inject: 'body',
+      inlineSource: '.(js)$',
+      chunks: ['ui'],
+      cache: false,
     }),
-    new HtmlWebpackInlineSourcePlugin(),
+    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/ui/]),
     new VueLoaderPlugin()
   ],
   devtool: "inline-source-map"

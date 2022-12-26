@@ -1,15 +1,21 @@
 <template>
-  <div>
+  <div class="main">
     <Welcome />
+    <div class="switcher">
+      <div class="icon">
+        <MoonIcon/>
+      </div>
+      <div class="icon">
+        <SunIcon/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import "../figma/figma-ds/js/selectMenu";
-import "../figma/figma-ds/js/iconInput";
-import "../figma/figma-ds/js/disclosure";
-
+import { MoonIcon, SunIcon } from 'vue-feather-icons'
 import Welcome from "./components/Welcome";
+import './style.css'
 
 export default {
   data() {
@@ -17,18 +23,26 @@ export default {
   },
 
   components: {
-    Welcome
+    Welcome,
+    MoonIcon,
+    SunIcon
   },
 
   mounted() {
-    // Initialize the figma-ds components
-    window.selectMenu.init();
-    window.iconInput.init();
-    window.disclosure.init();
   }
 };
 </script>
 
-<style lang="scss">
-@import "../figma/figma-ds/figma-plugin-ds";
+<style lang="postcss">
+  .main {
+    .switcher {
+      display: flex;
+      .icon {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        border-radius: 20px;
+      }
+    }
+  }
 </style>

@@ -1,1 +1,1 @@
-figma.showUI(__html__, { width: 350, height: 600 });
+figma.showUI(__html__, { width: 240, height: 300 });
