@@ -6,5 +6,8 @@
     "target": "es5",
     "allowJs": true
   },
+  "vueCompilerOptions": {
+    "target": 2.7
+  },
   "include": ["src/**/*", "node_modules/@types/**/*", "node_modules/@figma/**/*"]
 }

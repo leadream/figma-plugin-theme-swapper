@@ -1,5 +1,5 @@
 {
-	"name": "Themer",
+	"name": "Theme swapper",
 	"id": "0123456789",
 	"api": "1.0.0",
 	"main": "dist/code.js",

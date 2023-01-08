@@ -7,7 +7,7 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 module.exports = {
   entry: {
     ui: "./src/ui/ui.js",
-    code: "./src/figma/code.ts"
+    code: "./src/figma/code.js"
   },
   output: {
     path: path.resolve(__dirname, "./dist"),

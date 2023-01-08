@@ -1,5 +1,5 @@
 {
-  "name": "my-new-figma-plugin",
+  "name": "figma-plugin-theme-swapper",
   "description": "Built with figma plugin starter for Vue",
   "version": "1.0.0",
   "author": "",
@@ -17,8 +17,7 @@
   "dependencies": {
     "vue": "^2.6.11",
     "vue-feather-icons": "^5.1.0",
-    "vue-resource": "^1.5.1",
-    "vuex": "^3.1.2"
+    "vue-resource": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
@@ -28,7 +27,7 @@
     "@figma/plugin-typings": "^1.57.1",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.2",
-    "file-loader": "^4.3.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.20",
     "postcss-loader": "^7.0.2",

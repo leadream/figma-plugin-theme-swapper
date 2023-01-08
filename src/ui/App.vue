@@ -1,48 +1,49 @@
 <template>
   <div class="main">
-    <Welcome />
-    <div class="switcher">
-      <div class="icon">
-        <MoonIcon/>
-      </div>
-      <div class="icon">
-        <SunIcon/>
-      </div>
-    </div>
+    <Switcher @toggle="reverse"/>
+    <Button @click="swap">切换</Button>
   </div>
 </template>
 
 <script>
-import { MoonIcon, SunIcon } from 'vue-feather-icons'
-import Welcome from "./components/Welcome";
+import Button from "./components/Button";
+import Switcher from "./components/Switcher";
 import './style.css'
 
+import { sendMessageToBackground } from './helper'
+
 export default {
-  data() {
-    return {};
-  },
-
   components: {
-    Welcome,
-    MoonIcon,
-    SunIcon
+    Button,
+    Switcher
   },
-
-  mounted() {
+  data() {
+    return {
+      targetTheme: 'Dark'
+    };
+  },
+  methods: {
+    reverse () {
+      if (this.targetTheme==='Dark') {
+        this.targetTheme = 'Light'
+      } else {
+        this.targetTheme = 'Dark'
+      }
+    },
+    swap () {
+      sendMessageToBackground('swap-theme', { targetTheme: this.targetTheme })
+    }
   }
-};
+}
 </script>
 
 <style lang="postcss">
   .main {
-    .switcher {
-      display: flex;
-      .icon {
-        width: 40px;
-        height: 40px;
-        padding: 8px;
-        border-radius: 20px;
-      }
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 12px;
   }
 </style>
